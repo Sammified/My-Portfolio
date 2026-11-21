@@ -220,10 +220,12 @@ h2 em { letter-spacing: -.01em; }
 .ev img { width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; transition: transform .6s var(--ease); }
 .ev:hover img { transform: scale(1.04); }
 .ev span { display: block; padding: 10px 14px; font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
-.results { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 12px; }
+.results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
 
 /* quotes */
-.quotes { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 16px; }
+.quotes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+.q { grid-column: span 2; }
+.q.q-wide { grid-column: span 3; }
 .q { position: relative; isolation: isolate; margin: 0; border-radius: var(--r); padding: 34px 30px; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; justify-content: space-between; gap: 30px; transition: border-color .4s, transform .5s var(--ease); }
 .q:first-child { background: radial-gradient(130% 130% at 0% 0%, rgba(138,26,64,.7), rgba(28,12,18,.8) 60%); }
 .q blockquote { margin: 0; font-family: var(--serif); font-size: clamp(1.45rem, 2.2vw, 1.85rem); line-height: 1.25; }
@@ -302,7 +304,9 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
   .hero-grid, .about { grid-template-columns: 1fr; }
   .hero { padding-top: 110px; min-height: auto; }
   .portrait { max-width: 440px; margin: 10px auto 0; width: 100%; }
-  .quotes, .svc { grid-template-columns: 1fr; }
+  .svc { grid-template-columns: 1fr; }
+  .quotes { grid-template-columns: 1fr; }
+  .q, .q.q-wide { grid-column: auto; }
   .proof-row { grid-template-columns: 1fr; }
   .proof-row div { border-left: 0; border-top: 1px solid var(--line); }
   .proof-row div:first-child { border-top: 0; }
@@ -522,6 +526,8 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
       </details>
     </div>
     <div class="results rv">
+      <div class="card tilt"><p class="mono">B2B SaaS founder &middot; Ghostwriting</p><b class="num sm">1K &rarr; 92K</b><p>impressions in two months on his LinkedIn, with 3 inbound leads.</p></div>
+      <div class="card tilt"><p class="mono">AcadeXa founder &middot; LinkedIn GTM</p><b class="num sm">+200</b><p>new followers and 5,000 impressions in week two.</p></div>
       <div class="card tilt"><p class="mono">Fintech infrastructure</p><b class="num sm">2.3% &rarr; 5.1%</b><p>outbound reply rate, six weeks after rebuilding the messaging framework.</p></div>
       <div class="card tilt"><p class="mono">Web3 brand</p><b class="num sm">340 &rarr; 2,100</b><p>waitlist in six weeks, rebuilt around one specific person.</p></div>
       <div class="card tilt"><p class="mono">Fintech pre-launch</p><b class="num sm" data-count="10000">10,000</b><p>person waitlist before launch. No paid ads.</p></div>
@@ -534,8 +540,10 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
   <div class="wrap">
     <div class="head rv"><p class="kicker"><span>04</span>From founders</p><h2>What founders <em>say.</em></h2></div>
     <div class="quotes rv">
-      <figure class="q tilt"><blockquote>You made our positioning so clear, demos started closing themselves.</blockquote><figcaption><i>PR</i><span><b>Pamela Reynolds</b>B2B AI Founder</span></figcaption></figure>
-      <figure class="q tilt"><blockquote>You're our North Star. It's great having you on the team driving these marketing initiatives forward.</blockquote><figcaption><i>OH</i><span><b>Oliver Harrington</b>B2B SaaS Founder</span></figcaption></figure>
+      <figure class="q q-wide tilt"><blockquote>You made our positioning so clear, demos started closing themselves.</blockquote><figcaption><i>PR</i><span><b>Pamela Reynolds</b>B2B AI Founder</span></figcaption></figure>
+      <figure class="q q-wide tilt"><blockquote>You're our North Star. It's great having you on the team driving these marketing initiatives forward.</blockquote><figcaption><i>OH</i><span><b>Oliver Harrington</b>B2B SaaS Founder &middot; 1K &rarr; 92K impressions in two months</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>Bravo Samuel! You are doing an amazing job. I am sooo happy!!!!</blockquote><figcaption><i>AX</i><span><b>Founder</b>AcadeXa</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>Thank you for our conversations. You've genuinely helped me get clearer on how I think about LinkedIn and what I want to build there.</blockquote><figcaption><i>GM</i><span><b>Founder</b>GetMow and Cloud</span></figcaption></figure>
       <figure class="q tilt"><blockquote>My website is so helpful to people who now can fully understand what I teach.</blockquote><figcaption><i>TL</i><span><b>Tiffney T. Laing</b>Founder, Bevy &amp; Dave</span></figcaption></figure>
     </div>
   </div>
