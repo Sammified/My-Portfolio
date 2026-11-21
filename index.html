@@ -222,6 +222,16 @@ h2 em { letter-spacing: -.01em; }
 .ev span { display: block; padding: 10px 14px; font-family: var(--mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .results { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; }
 
+/* floating card rails */
+.mcards { position: relative; overflow: hidden; padding: 10px 0 24px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.mtrack { display: flex; width: max-content; animation: scroll 70s linear infinite; }
+.mtrack .set { display: flex; gap: 18px; padding-right: 18px; align-items: stretch; }
+.mcards.rev .mtrack { animation-direction: reverse; animation-duration: 80s; }
+.mcards:hover .mtrack, .mcards:focus-within .mtrack, .mcards:active .mtrack { animation-play-state: paused; }
+.mcards .tp { width: 380px; flex: none; }
+.mcards .q { width: 430px; flex: none; }
+.js .mcards.rv .tp, .js .mcards.rv .q { opacity: 1; transform: none; }
+
 /* quotes */
 .quotes { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
 .q { grid-column: span 2; }
@@ -285,6 +295,8 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
 .js .rv.in > :nth-child(2) { transition-delay: .08s; } .js .rv.in > :nth-child(3) { transition-delay: .16s; } .js .rv.in > :nth-child(4) { transition-delay: .24s; } .js .rv.in > :nth-child(5) { transition-delay: .32s; } .js .rv.in > :nth-child(6) { transition-delay: .4s; }
 
 @media (prefers-reduced-motion: reduce) {
+  .mcards { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .mtrack .set[aria-hidden] { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .js .rv, .js .load, .js .rv * { opacity: 1 !important; transform: none !important; }
   .js .split .w > span { transform: none; }
@@ -338,6 +350,9 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
   .fc1 { left: -6px; top: 64%; } .fc2 { right: -6px; top: 4%; } .fc3 { display: none; }
   .dock a { padding: 8px 9px; font-size: .74rem; }
   .lines .track span { padding: 20px 24px; }
+  .mcards .tp { width: 300px; min-height: 0; }
+  .mcards .q { width: 310px; }
+  .mtrack { animation-duration: 55s; }
   .chart-labels span:nth-child(3) { display: none; }
 }
 
@@ -434,8 +449,10 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
       <h2>The posts founders <em>kept talking about.</em></h2>
       <p class="intro">My six most-read posts of the year. Every one of them started 87 to 154 conversations in the comments.</p>
     </div>
-    <div class="tops rv">
-      <article class="tp tilt">
+  </div>
+  <div class="mcards rv" aria-label="Most-read posts">
+    <div class="mtrack">
+      <div class="set"><article class="tp tilt">
         <div class="tp-top"><span class="mono">01</span><span class="chip">AI search</span></div>
         <h3>Your company may already be invisible in AI search, and publishing more content may not fix it.</h3>
         <p>If your positioning is vague, publishing at higher volume just gives AI more noise to interpret. A positioning problem wearing an AEO hat.</p>
@@ -470,8 +487,46 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
         <h3>I used to think the best copy won. I was wrong.</h3>
         <p>Same writer, same product, different positioning: a 10,000-person waitlist before launch.</p>
         <div class="tp-stats"><span><b data-count="1944">1,944</b> impressions</span><span><b data-count="140">140</b> comments</span></div>
+      </article></div>
+      <div class="set" aria-hidden="true"><article class="tp tilt">
+        <div class="tp-top"><span class="mono">01</span><span class="chip">AI search</span></div>
+        <h3>Your company may already be invisible in AI search, and publishing more content may not fix it.</h3>
+        <p>If your positioning is vague, publishing at higher volume just gives AI more noise to interpret. A positioning problem wearing an AEO hat.</p>
+        <div class="tp-stats"><span><b data-count="3068">3,068</b> impressions</span><span><b data-count="137">137</b> comments</span></div>
       </article>
+      <article class="tp tilt">
+        <div class="tp-top"><span class="mono">02</span><span class="chip">Brand clarity</span></div>
+        <h3>We didn't get 29.3K views because we started creating more content. We got there because we got clearer.</h3>
+        <p>One month in as Head of Brand at Murals.ng: 29.3K+ views, 3 inbound leads, and a brand that finally says one thing.</p>
+        <div class="tp-stats"><span><b data-count="2699">2,699</b> impressions</span><span><b data-count="87">87</b> comments</span></div>
+      </article>
+      <article class="tp tilt">
+        <div class="tp-top"><span class="mono">03</span><span class="chip">Copywriting</span></div>
+        <h3>Before I write a single word of copy for a client, I ask 5 questions. Most copywriters skip 4 of them.</h3>
+        <p>What they believe before they find you. The objection under the objection. The villain. The day after success. Why they should believe you right now.</p>
+        <div class="tp-stats"><span><b data-count="2655">2,655</b> impressions</span><span><b data-count="128">128</b> comments</span></div>
+      </article>
+      <article class="tp tilt">
+        <div class="tp-top"><span class="mono">04</span><span class="chip">Growth</span></div>
+        <h3>Last week, I crossed 3,000 followers on LinkedIn. But the number isn't what I want to talk about.</h3>
+        <p>It wasn't posting every day or one viral post. It was clarity on who I'm talking to and what they need to believe.</p>
+        <div class="tp-stats"><span><b data-count="2467">2,467</b> impressions</span><span><b data-count="154">154</b> comments</span></div>
+      </article>
+      <article class="tp tilt">
+        <div class="tp-top"><span class="mono">05</span><span class="chip">AEO</span></div>
+        <h3>A bootstrapped startup with zero domain authority can show up in ChatGPT answers before a funded competitor.</h3>
+        <p>LLMs reward content that's clear enough to extract, credible enough to cite and consistent enough to trust.</p>
+        <div class="tp-stats"><span><b data-count="1981">1,981</b> impressions</span><span><b data-count="112">112</b> comments</span></div>
+      </article>
+      <article class="tp tilt">
+        <div class="tp-top"><span class="mono">06</span><span class="chip">Positioning</span></div>
+        <h3>I used to think the best copy won. I was wrong.</h3>
+        <p>Same writer, same product, different positioning: a 10,000-person waitlist before launch.</p>
+        <div class="tp-stats"><span><b data-count="1944">1,944</b> impressions</span><span><b data-count="140">140</b> comments</span></div>
+      </article></div>
     </div>
+  </div>
+  <div class="wrap">
     <div class="center rv"><a class="btn btn-ghost mag" href="https://www.linkedin.com/in/samuel-nnubaonye/recent-activity/all/" target="_blank" rel="noopener"><span>Read everything on LinkedIn</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
   </div>
 </section>
@@ -539,13 +594,26 @@ footer { position: relative; z-index: 2; padding: 20px 0 50px; overflow: hidden;
 <section class="sec" id="testimonials">
   <div class="wrap">
     <div class="head rv"><p class="kicker"><span>04</span>From founders</p><h2>What founders <em>say.</em></h2></div>
-    <div class="quotes rv">
-      <figure class="q q-wide tilt"><blockquote>You made our positioning so clear, demos started closing themselves.</blockquote><figcaption><i>PR</i><span><b>Pamela Reynolds</b>B2B AI Founder</span></figcaption></figure>
-      <figure class="q q-wide tilt"><blockquote>You're our North Star. It's great having you on the team driving these marketing initiatives forward.</blockquote><figcaption><i>OH</i><span><b>Oliver Harrington</b>B2B SaaS Founder &middot; 1K &rarr; 92K impressions in two months</span></figcaption></figure>
+  </div>
+  <div class="mcards rv rev" aria-label="Testimonials">
+    <div class="mtrack">
+      <div class="set">
+      <figure class="q tilt"><blockquote>You made our positioning so clear, demos started closing themselves.</blockquote><figcaption><i>PR</i><span><b>Pamela Reynolds</b>B2B AI Founder</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>You're our North Star. It's great having you on the team driving these marketing initiatives forward.</blockquote><figcaption><i>OH</i><span><b>Oliver Harrington</b>B2B SaaS Founder &middot; 1K &rarr; 92K impressions in two months</span></figcaption></figure>
       <figure class="q tilt"><blockquote>Bravo Samuel! You are doing an amazing job. I am sooo happy!!!!</blockquote><figcaption><i>DR</i><span><b>Deborah Realini</b>Founder, AcadeXa</span></figcaption></figure>
       <figure class="q tilt"><blockquote>Thank you for our conversations. You've genuinely helped me get clearer on how I think about LinkedIn and what I want to build there.</blockquote><figcaption><i>EC</i><span><b>Eli Cloud</b>Founder, GetMOW and Cloud</span></figcaption></figure>
       <figure class="q tilt"><blockquote>My website is so helpful to people who now can fully understand what I teach.</blockquote><figcaption><i>TL</i><span><b>Tiffney T. Laing</b>Founder, Bevy &amp; Dave</span></figcaption></figure>
+      </div>
+      <div class="set" aria-hidden="true">
+      <figure class="q tilt"><blockquote>You made our positioning so clear, demos started closing themselves.</blockquote><figcaption><i>PR</i><span><b>Pamela Reynolds</b>B2B AI Founder</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>You're our North Star. It's great having you on the team driving these marketing initiatives forward.</blockquote><figcaption><i>OH</i><span><b>Oliver Harrington</b>B2B SaaS Founder &middot; 1K &rarr; 92K impressions in two months</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>Bravo Samuel! You are doing an amazing job. I am sooo happy!!!!</blockquote><figcaption><i>DR</i><span><b>Deborah Realini</b>Founder, AcadeXa</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>Thank you for our conversations. You've genuinely helped me get clearer on how I think about LinkedIn and what I want to build there.</blockquote><figcaption><i>EC</i><span><b>Eli Cloud</b>Founder, GetMOW and Cloud</span></figcaption></figure>
+      <figure class="q tilt"><blockquote>My website is so helpful to people who now can fully understand what I teach.</blockquote><figcaption><i>TL</i><span><b>Tiffney T. Laing</b>Founder, Bevy &amp; Dave</span></figcaption></figure>
+      </div>
     </div>
+  </div>
+  <div class="wrap">
   </div>
 </section>
 
