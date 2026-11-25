@@ -60,8 +60,8 @@ export function DesktopHeader() {
 <p style={{ margin: '0', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#B9CCC6' }}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FC4A1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Your money stays in your own bank. Nothing moves until you approve it.</p>
 </section>
 
-<div onMouseMove={onMove} onMouseLeave={onLeave} className="t-wrap" style={{ position: 'relative', zIndex: '2', maxWidth: '1180px', height: '820px', margin: '72px auto 0', padding: '0 32px', boxSizing: 'border-box' }}>
-<div style={{ position: 'absolute', left: '0', right: '0', top: '0', bottom: '0', transformStyle: 'preserve-3d', transform: `perspective(2000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`, transition: 'transform 0.35s ease-out' }}>
+<div data-tilt onMouseMove={onMove} onMouseLeave={onLeave} className="t-wrap" style={{ position: 'relative', zIndex: '2', maxWidth: '1180px', height: '820px', margin: '72px auto 0', padding: '0 32px', boxSizing: 'border-box' }}>
+<div data-tilt-inner style={{ position: 'absolute', left: '0', right: '0', top: '0', bottom: '0', transformStyle: 'preserve-3d', transform: `perspective(2000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`, transition: 'transform 0.35s ease-out' }}>
 
 
 
@@ -104,12 +104,12 @@ export function DesktopHeader() {
 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '0 4px 2px' }}><span style={{ fontSize: '17px', fontWeight: '600' }}>This week's order</span><span style={{ fontSize: '13px', color: '#E9D3A0' }}>See all</span></div>
 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '18px', background: '#0F191A', border: '1px solid #1B2729' }}>
 <span style={{ width: '40px', height: '40px', borderRadius: '20px', background: '#132B27', color: '#E9D3A0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '600' }}>01</span>
-<span style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '2px' }}><span style={{ fontSize: '15px', fontWeight: '600' }}>Restock</span><span style={{ fontSize: '12px', color: '#8FA29D' }}>Funded Mon, 09:12</span></span>
+<span style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '2px' }}><span style={{ fontSize: '15px', fontWeight: '600' }}>Restock</span><span style={{ fontSize: '12px', color: '#8FA29D' }}>Moved by you, Mon</span></span>
 <span style={{ fontSize: '15px', fontWeight: '600', color: '#7FC4A1' }}>{formatNaira(demo.restock.allocated)}</span>
 </div>
 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '18px', background: '#0F191A', border: '1px solid #1B2729' }}>
 <span style={{ width: '40px', height: '40px', borderRadius: '20px', background: '#132B27', color: '#E9D3A0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '600' }}>02</span>
-<span style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '2px' }}><span style={{ fontSize: '15px', fontWeight: '600' }}>Your salary</span><span style={{ fontSize: '12px', color: '#8FA29D' }}>Paid to you, Mon</span></span>
+<span style={{ flex: '1', display: 'flex', flexDirection: 'column', gap: '2px' }}><span style={{ fontSize: '15px', fontWeight: '600' }}>Your salary</span><span style={{ fontSize: '12px', color: '#8FA29D' }}>Moved by you, Mon</span></span>
 <span style={{ fontSize: '15px', fontWeight: '600', color: '#7FC4A1' }}>{formatNaira(demo.salary.allocated)}</span>
 </div>
 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px', borderRadius: '18px', background: '#0F191A', border: '1px solid #1B2729' }}>
@@ -130,7 +130,7 @@ export function DesktopHeader() {
 </div>
 
 <div className="t-float" style={{ position: 'absolute', zIndex: '3', right: 'calc(50% + 110px)', top: '390px', '--z': '60px', animation: 'tBob 7s ease-in-out -2s infinite', width: '340px', boxSizing: 'border-box', padding: '22px', borderRadius: '26px', background: 'rgba(14,22,23,0.94)', border: '1px solid #2B3C3E', boxShadow: '0 40px 100px rgba(0,0,0,0.65)', textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '14px' } as React.CSSProperties}>
-<span style={{ fontSize: '11px', fontWeight: '500', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#8FA29D' }}>Live demo · Voice note in Pidgin</span>
+<span style={{ fontSize: '11px', fontWeight: '500', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#8FA29D' }}>Demo · Voice note in Pidgin</span>
 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
 <span style={{ width: '40px', height: '40px', flexShrink: '0', borderRadius: '20px', background: 'linear-gradient(140deg, #F3E3B8, #C8A45D)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg width="14" height="14" viewBox="0 0 24 24" fill="#0B1416" aria-hidden="true"><path d="M7 4l13 8-13 8z"></path></svg></span>
 <div className="t-wave" aria-hidden="true" style={{ flex: '1', display: 'flex', alignItems: 'center', gap: '3px', height: '34px' }}>
@@ -170,7 +170,8 @@ export function DesktopHeader() {
 </div>
 </div>
 
-<div aria-hidden="true" style={{ height: '140px' }}></div>
+<p style={{ position: 'relative', zIndex: 2, margin: '28px 0 0', textAlign: 'center', fontSize: '12px', color: '#8FA29D' }}>Sample figures for illustration.</p>
+<div aria-hidden="true" style={{ height: '110px' }}></div>
 </header>
 </>
   );

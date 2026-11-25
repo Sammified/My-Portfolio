@@ -14,13 +14,13 @@ export function HowItWorks() {
 
 <div className="t-card t-reveal t-tilt" style={{ flex: '1 1 320px', minWidth: '0', padding: '30px', borderRadius: '28px', background: 'linear-gradient(180deg, rgba(20,32,33,0.92) 0%, rgba(10,17,18,0.92) 100%)', border: '1px solid #1F2D2F', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: '18px' }}>
 <div style={{ height: '200px', borderRadius: '20px', background: 'radial-gradient(ellipse 80% 80% at 50% 0%, rgba(46,150,120,0.30), rgba(5,10,11,0) 75%), #0A1112', border: '1px solid #1B2729', padding: '20px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '10px' }}>
-<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#121D1F', border: '1px solid #22302F', fontSize: '14px' }}><span>Bank account</span><span style={{ color: '#7FC4A1' }}>Linked</span></div>
-<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#121D1F', border: '1px solid #22302F', fontSize: '14px' }}><span>POS terminal</span><span style={{ color: '#7FC4A1' }}>Linked</span></div>
-<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#121D1F', border: '1px dashed #3A4E50', fontSize: '14px', color: '#A9B7B3' }}><span>Mobile money</span><span style={{ color: '#E9D3A0' }}>+ Add</span></div>
+<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#121D1F', border: '1px solid #22302F', fontSize: '14px' }}><span>Voice note</span><span style={{ color: '#7FC4A1' }}>Logged</span></div>
+<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#121D1F', border: '1px solid #22302F', fontSize: '14px' }}><span>Bank alert</span><span style={{ color: '#7FC4A1' }}>Logged</span></div>
+<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#121D1F', border: '1px dashed #3A4E50', fontSize: '14px', color: '#A9B7B3' }}><span>Bank &amp; POS link</span><span style={{ color: '#E9D3A0' }}>Coming soon</span></div>
 </div>
 <span style={{ fontFamily: '\'Instrument Serif\', serif', fontSize: '52px', lineHeight: '1', background: 'linear-gradient(95deg, #8E7034, #E9D3A0 45%, #C8A45D)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', alignSelf: 'flex-start', paddingRight: '6px' }}>01</span>
-<h3 style={{ margin: '0', fontSize: '22px', fontWeight: '600', letterSpacing: '-0.02em' }}>Connect what you already use</h3>
-<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Link your bank, POS and mobile money accounts. Nothing to switch, no new account to open.</p>
+<h3 style={{ margin: '0', fontSize: '22px', fontWeight: '600', letterSpacing: '-0.02em' }}>Tell Tiera what came in</h3>
+<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Log cash and transfers with a voice note, by typing, or by forwarding your bank alert. Nothing to switch, no new account to open.</p>
 </div>
 
 <div className="t-card t-reveal t-tilt" style={{ flex: '1 1 320px', minWidth: '0', padding: '30px', borderRadius: '28px', background: 'linear-gradient(180deg, rgba(20,32,33,0.92) 0%, rgba(10,17,18,0.92) 100%)', border: '1px solid #1F2D2F', boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.05)', display: 'flex', flexDirection: 'column', gap: '18px' }}>
@@ -45,7 +45,7 @@ export function HowItWorks() {
 </div>
 <span style={{ fontFamily: '\'Instrument Serif\', serif', fontSize: '52px', lineHeight: '1', background: 'linear-gradient(95deg, #8E7034, #E9D3A0 45%, #C8A45D)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent', alignSelf: 'flex-start', paddingRight: '6px' }}>03</span>
 <h3 style={{ margin: '0', fontSize: '22px', fontWeight: '600', letterSpacing: '-0.02em' }}>Approve the week</h3>
-<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Every Monday, Tiera shows the plan. One tap and it's done. If money is short, the last tier waits. It doesn't disappear.</p>
+<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Every Monday, Tiera shows the plan. Approve it, then move the money in your own bank app. If money is short, the last tier waits. It doesn't disappear.</p>
 </div>
 
 </div>

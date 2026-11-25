@@ -16,11 +16,11 @@ export function Footer() {
 <a href="#trust" style={{ color: '#A9B7B3' }}>Trust</a>
 <a href="#join" style={{ color: '#A9B7B3' }}>Join the pilot</a>
 <a href="#" style={{ color: '#A9B7B3' }}>[Terms]</a>
-<a href="#" style={{ color: '#A9B7B3' }}>[Privacy Policy]</a>
+<a href="/privacy" style={{ color: '#A9B7B3' }}>Privacy notice</a>
 <span>© 2026 Tiera</span>
 </div>
 </div>
-<p className="t-wrap" style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px 120px', boxSizing: 'border-box', fontSize: '13px', lineHeight: '1.6', color: '#8FA29D' }}>Tiera is not a bank and does not hold or move money during the pilot. Automatic transfers will be provided by [LICENSED BANK PARTNER]. Savings and investing will be provided by [LICENSED PARTNER].</p>
+<p className="t-wrap" style={{ position: 'relative', maxWidth: '1200px', margin: '0 auto', padding: '0 32px 120px', boxSizing: 'border-box', fontSize: '13px', lineHeight: '1.6', color: '#8FA29D' }}>[COMPANY NAME] Ltd, RC [NUMBER], [REGISTERED ADDRESS], Lagos. Contact: [SUPPORT EMAIL]. Tiera is not a bank and does not hold or move money during the pilot. Automatic transfers will be provided by [LICENSED BANK PARTNER]. Savings and investing will be provided by [LICENSED PARTNER]. Nothing on this site is investment advice.</p>
 </footer>
 </>
   );

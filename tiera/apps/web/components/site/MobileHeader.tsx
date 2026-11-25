@@ -27,7 +27,7 @@ export function MobileHeader() {
 
 <div style={{ position: 'relative', padding: '0 20px 48px' }}>
 <div style={{ padding: '20px', borderRadius: '26px', background: 'rgba(14,22,23,0.96)', border: '1px solid #2B3C3E', boxShadow: '0 30px 70px rgba(0,0,0,0.6)', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-<span style={{ fontSize: '11px', fontWeight: '500', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#8FA29D' }}>Live demo · Voice note in Pidgin</span>
+<span style={{ fontSize: '11px', fontWeight: '500', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#8FA29D' }}>Demo · Voice note in Pidgin</span>
 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
 <span style={{ width: '38px', height: '38px', flexShrink: '0', borderRadius: '19px', background: 'linear-gradient(140deg, #F3E3B8, #C8A45D)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><svg width="13" height="13" viewBox="0 0 24 24" fill="#0B1416" aria-hidden="true"><path d="M7 4l13 8-13 8z"></path></svg></span>
 <div className="t-wave" aria-hidden="true" style={{ flex: '1', display: 'flex', alignItems: 'center', gap: '3px', height: '30px' }}>

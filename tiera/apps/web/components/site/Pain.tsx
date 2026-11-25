@@ -39,7 +39,7 @@ export function Pain() {
 </div>
 </div>
 <div style={{ flex: '999 1 420px', minWidth: '0', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-<p style={{ margin: '0', fontSize: '22px', lineHeight: '1.45', letterSpacing: '-0.01em' }}>You're not alone. In 2025, 65% of Nigerian informal businesses grew their revenue. <span style={{ color: '#E9D3A0' }}>Only 47% grew their profit.</span></p>
+<p style={{ margin: '0', fontSize: '22px', lineHeight: '1.45', letterSpacing: '-0.01em' }}>You're not alone. In 2025, 65% of Nigerian informal businesses saw their revenue rise. <span style={{ color: '#E9D3A0' }}>Only 47% saw their profit rise.</span></p>
 <p style={{ margin: '0', fontSize: '13px', color: '#8FA29D' }}>Source: Moniepoint Informal Economy Report 2025.</p>
 </div>
 </div>

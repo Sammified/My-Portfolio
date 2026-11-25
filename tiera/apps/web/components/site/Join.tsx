@@ -30,7 +30,7 @@ export function Join() {
 <p style={{ margin: '0', fontSize: '16px', lineHeight: '1.6', color: '#A9B7B3' }}>{state.message}</p>
 </div>
 ) : (
-<form action={action} noValidate className="t-card" style={{ flex: '1 1 400px', minWidth: '0', padding: '36px', borderRadius: '32px', background: 'linear-gradient(180deg, rgba(20,32,33,0.92), rgba(10,17,18,0.95))', border: '1px solid #2B3C3E', boxShadow: '0 40px 120px rgba(0,0,0,0.55)', display: 'flex', flexDirection: 'column', gap: '18px' }}>
+<form data-signup action={action} noValidate className="t-card" style={{ flex: '1 1 400px', minWidth: '0', padding: '36px', borderRadius: '32px', background: 'linear-gradient(180deg, rgba(20,32,33,0.92), rgba(10,17,18,0.95))', border: '1px solid #2B3C3E', boxShadow: '0 40px 120px rgba(0,0,0,0.55)', display: 'flex', flexDirection: 'column', gap: '18px' }}>
 <label htmlFor="t-name" style={label}>Your name
 <input id="t-name" name="name" type="text" autoComplete="name" required maxLength={80} defaultValue={v?.name} aria-invalid={!!e.name} aria-describedby={e.name ? "t-name-err" : undefined} style={field(!!e.name)} />
 {e.name && <span id="t-name-err" style={err}>{e.name}</span>}
@@ -51,12 +51,12 @@ export function Join() {
 </div>
 <label style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '13px', lineHeight: '1.55', color: '#A9B7B3', minHeight: '44px' }}>
 <input type="checkbox" name="consent" required aria-invalid={!!e.consent} style={{ width: '20px', height: '20px', flexShrink: '0', marginTop: '1px', accentColor: '#C8A45D' }} />
-<span>Tiera can message me on WhatsApp about the pilot and keep these details as set out in the <a href="#">[Privacy Policy]</a>.</span>
+<span>Tiera can message me on WhatsApp about the pilot and keep these details as set out in the <a href="/privacy">privacy notice</a>.</span>
 </label>
 {e.consent && <span style={err}>{e.consent}</span>}
 {e.form && <span role="alert" style={err}>{e.form}</span>}
 <button type="submit" disabled={pending} style={{ marginTop: '6px', padding: '17px', border: '0', borderRadius: '999px', background: 'linear-gradient(140deg, #F3E3B8 0%, #C8A45D 60%, #A8853F 100%)', boxShadow: '0 0 40px rgba(232,200,130,0.30)', color: '#0B1416', fontFamily: 'Inter, sans-serif', fontWeight: '600', fontSize: '16px', cursor: 'pointer', opacity: pending ? 0.6 : 1 }}>{pending ? "Saving…" : "Join the Lagos pilot"}</button>
-<p style={{ margin: '0', fontSize: '13px', color: '#8FA29D' }}>No spam. Just one message when your spot is ready.</p>
+<p style={{ margin: '0', fontSize: '13px', lineHeight: '1.6', color: '#8FA29D' }}>No spam. We use your name, number and business type only to contact you about the pilot, and delete them when you ask. Prefer WhatsApp? <a href="[YOUR WHATSAPP LINK]">Message us directly</a>.</p>
 </form>
 )}
 </div>

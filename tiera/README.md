@@ -55,6 +55,15 @@ phone number masked. Nothing is saved.
    (Project Settings → API). On Vercel, add the same two variables.
 4. Read sign-ups in the Supabase dashboard (Table editor → `pilot_signups`). The anon key can insert but never read.
 
+**Static preview for Netlify (drag and drop):**
+```bash
+pnpm --filter @tiera/web build && pnpm --filter @tiera/web start   # terminal 1
+node apps/web/scripts/export-netlify.mjs                           # terminal 2 → dist/netlify/
+```
+`dist/netlify/` is plain HTML (React replaced by `scripts/netlify-client.js`), self-hosted fonts, `noindex`
+headers and a Netlify Forms sign-up. Drag the folder onto app.netlify.com/drop, then in the site's settings
+enable **Forms → form detection** and redeploy so sign-ups are captured.
+
 **Deploy to Vercel:** import the repo, set Root Directory to `tiera/apps/web`. Vercel detects Next.js and pnpm.
 
 Watch mode for the engine: `pnpm --filter @tiera/engine test:watch`
@@ -91,6 +100,10 @@ Rules:
 **Numbers come from code, never from AI.** Any AI or voice feature may explain a plan but must read figures from the engine.
 
 ## Placeholders to fill before launch
+
+Legal/company: `[COMPANY NAME] Ltd, RC [NUMBER], [REGISTERED ADDRESS]`, `[SUPPORT EMAIL]`, `[SUPPORT CONTACT]`,
+`[WHATSAPP NUMBER]`, `[YOUR WHATSAPP LINK]`, `[HOSTING PROVIDER]`, `[DATE]`, retention and reply periods in the
+privacy notice (`/privacy`, a draft for lawyer review), and `[incl. / excl.] 7.5% VAT` under pricing.
 
 `[LICENSED BANK PARTNER]`, `[LICENSED PARTNER]`, `[YOUR REQUEST LINK]`, `[Terms]`, `[Privacy Policy]`,
 testimonials, and security details all appear on the site as visible placeholders. The Moniepoint figures
