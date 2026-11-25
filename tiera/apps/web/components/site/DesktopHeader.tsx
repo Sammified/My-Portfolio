@@ -2,6 +2,7 @@
 import type React from "react";
 import { useRef, useState } from "react";
 import { demo, formatNaira } from "@/lib/demo";
+import { site } from "@/lib/site";
 
 export function DesktopHeader() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
@@ -46,17 +47,18 @@ export function DesktopHeader() {
 </nav>
 
 <section id="top" className="t-sec" style={{ position: 'relative', zIndex: '2', maxWidth: '1240px', margin: '0 auto', padding: '120px 32px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '28px' }}>
-<p style={{ margin: '0', padding: '9px 18px', borderRadius: '999px', border: '1px solid rgba(236,216,168,0.35)', background: 'rgba(5,10,11,0.55)', fontSize: '12px', fontWeight: '500', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#E9D3A0' }}>For owners who are tired of guessing</p>
+<p style={{ margin: '0', padding: '9px 18px', borderRadius: '999px', border: '1px solid rgba(236,216,168,0.35)', background: 'rgba(5,10,11,0.55)', fontSize: '12px', fontWeight: '500', letterSpacing: '0.22em', textTransform: 'uppercase', color: '#E9D3A0' }}>Free Android app · Lagos pilot</p>
 <h1 style={{ margin: '0', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: '400' }}>
 <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: '500', fontSize: 'clamp(46px, 8.2vw, 122px)', letterSpacing: '-0.06em', lineHeight: '0.98', color: '#F7F5EF' }}>Your business</span>
 <span style={{ fontFamily: '\'Instrument Serif\', serif', fontStyle: 'italic', fontSize: 'clamp(52px, 9.2vw, 136px)', letterSpacing: '-0.02em', lineHeight: '0.98', padding: '0 12px', background: 'linear-gradient(95deg, #8E7034 0%, #E9D3A0 28%, #FFF6DD 46%, #C8A45D 66%, #7A5F2C 100%)', backgroundSize: '220% 100%', animation: 'tShine 5s ease-in-out infinite alternate', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>makes money.</span>
 <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: '500', fontSize: 'clamp(46px, 8.2vw, 122px)', letterSpacing: '-0.06em', lineHeight: '1.02', paddingBottom: '6px', background: 'linear-gradient(180deg, #DCE7E3 0%, #7E948E 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Tiera makes it stay.</span>
 </h1>
-<p style={{ margin: '6px 0 0', fontSize: '20px', lineHeight: '1.55', color: '#DCE7E3', maxWidth: '640px' }}>Tiera splits every naira that comes in, cash or transfer, in the order you choose: restock, your salary, family, then growth.</p>
+<p style={{ margin: '6px 0 0', fontSize: '20px', lineHeight: '1.55', color: '#DCE7E3', maxWidth: '640px' }}>Tiera is a free Android app that tells every naira, cash or transfer, where to go: restock, your salary, family, then growth. You move the money in your own bank app.</p>
 <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '14px' }}>
 <a href="#join" style={{ padding: '16px 30px', borderRadius: '999px', background: 'linear-gradient(140deg, #F3E3B8 0%, #C8A45D 60%, #A8853F 100%)', boxShadow: '0 0 40px rgba(232,200,130,0.35)', color: '#0B1416', fontWeight: '600', fontSize: '16px', textDecoration: 'none' }}>Join the Lagos pilot</a>
-<a href="#how" style={{ padding: '16px 30px', borderRadius: '999px', border: '1px solid rgba(236,216,168,0.35)', background: 'rgba(5,10,11,0.5)', color: '#F4F2EC', fontWeight: '500', fontSize: '16px', textDecoration: 'none' }}>See how it works</a>
+{site.whatsappUrl && <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '16px 30px', borderRadius: '999px', border: '1px solid rgba(130,220,188,0.45)', background: 'rgba(5,10,11,0.5)', color: '#F4F2EC', fontWeight: '500', fontSize: '16px', textDecoration: 'none' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FC4A1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"></path></svg>Chat with us on WhatsApp</a>}
 </div>
+<p style={{ margin: '0', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '8px 18px', fontSize: '14px', color: '#E9D3A0' }}><span>First 3 months free</span><span aria-hidden="true">·</span><span>Small Lagos group</span><span aria-hidden="true">·</span><span>We set it up with you on WhatsApp</span></p>
 <p style={{ margin: '0', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#B9CCC6' }}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7FC4A1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>Your money stays in your own bank. Nothing moves until you approve it.</p>
 </section>
 

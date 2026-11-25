@@ -5,6 +5,12 @@
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
   function json(id) { var el = document.getElementById(id); try { return el ? JSON.parse(el.textContent) : null; } catch (e) { return null; } }
 
+  // Owner photos: hide any that failed to load so the designed fallback shows
+  $$("img[data-photo]").forEach(function (img) {
+    function hide() { img.style.display = "none"; }
+    if (img.complete && img.naturalWidth === 0) hide(); else img.addEventListener("error", hide);
+  });
+
   // Language chips
   var voice = json("voice-data");
   if (voice) {

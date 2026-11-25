@@ -1,5 +1,6 @@
 "use client";
 import type React from "react";
+import { site } from "@/lib/site";
 import { useActionState } from "react";
 import { joinPilot, type SignupState } from "@/app/actions";
 import { businessTypes } from "@/lib/signup";
@@ -56,7 +57,7 @@ export function Join() {
 {e.consent && <span style={err}>{e.consent}</span>}
 {e.form && <span role="alert" style={err}>{e.form}</span>}
 <button type="submit" disabled={pending} style={{ marginTop: '6px', padding: '17px', border: '0', borderRadius: '999px', background: 'linear-gradient(140deg, #F3E3B8 0%, #C8A45D 60%, #A8853F 100%)', boxShadow: '0 0 40px rgba(232,200,130,0.30)', color: '#0B1416', fontFamily: 'Inter, sans-serif', fontWeight: '600', fontSize: '16px', cursor: 'pointer', opacity: pending ? 0.6 : 1 }}>{pending ? "Saving…" : "Join the Lagos pilot"}</button>
-<p style={{ margin: '0', fontSize: '13px', lineHeight: '1.6', color: '#8FA29D' }}>No spam. We use your name, number and business type only to contact you about the pilot, and delete them when you ask. Prefer WhatsApp? <a href="[YOUR WHATSAPP LINK]">Message us directly</a>.</p>
+<p style={{ margin: '0', fontSize: '13px', lineHeight: '1.6', color: '#8FA29D' }}>No spam. We use your name, number and business type only to contact you about the pilot, and delete them when you ask.{site.whatsappUrl && <> Prefer WhatsApp? <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer">Message us directly</a>.</>}</p>
 </form>
 )}
 </div>

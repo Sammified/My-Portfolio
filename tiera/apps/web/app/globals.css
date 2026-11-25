@@ -35,6 +35,7 @@ summary { list-style: none; min-height: 44px; display: flex; align-items: center
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "+"; flex-shrink: 0; width: 32px; height: 32px; border-radius: 16px; border: 1px solid #2B3C3E; display: flex; align-items: center; justify-content: center; color: #E9D3A0; font-weight: 400; transition: transform .25s; }
 details[open] summary::after { transform: rotate(45deg); }
+#pricing li > svg { flex-shrink: 0; margin-top: 2px; }
 .t-tap { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 select option { background: #0B1416; color: #F4F2EC; }
 
@@ -70,7 +71,17 @@ select option { background: #0B1416; color: #F4F2EC; }
   .t-wrap{padding-left:20px !important;padding-right:20px !important}
   .t-card{padding:24px !important}
   .t-tilt:hover{transform:none}
+  .t-hide-m{display:none !important}
+  .t-timeline{flex-direction:column !important;gap:10px !important}
+  .t-timeline > li{flex:none !important;flex-direction:row !important;align-items:center !important;text-align:left !important;gap:14px !important}
+  .t-timeline > li > span:first-child{flex-shrink:0;width:48px !important;height:48px !important}
+  .t-timeline > li > span:last-child{padding:14px 16px !important}
+  .t-snap-m{align-self:stretch;flex-wrap:nowrap !important;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin:0 -20px;padding-left:20px;padding-right:20px;width:auto !important;scroll-padding-left:20px}
+  .t-snap-m > *{flex:0 0 86% !important;scroll-snap-align:start}
+  .t-snap-m > :nth-child(2){order:-1}
 }
+.t-snap::-webkit-scrollbar,.t-snap-m::-webkit-scrollbar{height:6px}
+.t-snap::-webkit-scrollbar-thumb,.t-snap-m::-webkit-scrollbar-thumb{background:#2B3C3E;border-radius:3px}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}

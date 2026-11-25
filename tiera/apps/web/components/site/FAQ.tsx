@@ -16,7 +16,7 @@ export function FAQ() {
 </details>
 <details style={{ padding: '24px 28px', borderRadius: '22px', background: 'linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F' }}>
 <summary style={{ cursor: 'pointer', fontSize: '18px', fontWeight: '600', letterSpacing: '-0.01em' }}>If Tiera doesn't hold my money, how does it move?</summary>
-<p style={{ margin: '14px 0 0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>During the pilot, Tiera shows you exactly what goes where each week, and you move it in your own bank app. Automatic moves come later through [LICENSED BANK PARTNER], and even then nothing moves until you tap approve.</p>
+<p style={{ margin: '14px 0 0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>During the pilot, Tiera shows you exactly what goes where each week, and you move it in your own bank app. Automatic moves come later through a licensed bank partner, and even then nothing moves until you tap approve.</p>
 </details>
 <details style={{ padding: '24px 28px', borderRadius: '22px', background: 'linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F' }}>
 <summary style={{ cursor: 'pointer', fontSize: '18px', fontWeight: '600', letterSpacing: '-0.01em' }}>Do I need an expensive phone?</summary>
@@ -24,7 +24,7 @@ export function FAQ() {
 </details>
 <details style={{ padding: '24px 28px', borderRadius: '22px', background: 'linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F' }}>
 <summary style={{ cursor: 'pointer', fontSize: '18px', fontWeight: '600', letterSpacing: '-0.01em' }}>Is my money and information safe?</summary>
-<p style={{ margin: '14px 0 0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Your money stays in your own bank. Tiera will never ask for your PIN or password. We follow the Nigeria Data Protection Act 2023. [SECURITY DETAILS]</p>
+<p style={{ margin: '14px 0 0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Your money stays in your own bank. Tiera will never ask for your PIN or password. We follow the Nigeria Data Protection Act 2023.</p>
 </details>
 <details style={{ padding: '24px 28px', borderRadius: '22px', background: 'linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F' }}>
 <summary style={{ cursor: 'pointer', fontSize: '18px', fontWeight: '600', letterSpacing: '-0.01em' }}>Will Tiera say no to my family for me?</summary>

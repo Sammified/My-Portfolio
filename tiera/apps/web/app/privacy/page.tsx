@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { companyLine, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy notice: Tiera",
@@ -11,7 +12,7 @@ const li: React.CSSProperties = { margin: "0 0 8px", fontSize: "16px", lineHeigh
 
 /**
  * DRAFT privacy notice for the pilot sign-up, written to the Nigeria Data Protection Act 2023.
- * Have a Nigerian data protection lawyer review it before launch. Fill every [BRACKET].
+ * Have a Nigerian data protection lawyer review it before launch. Values come from lib/site.ts.
  */
 export default function Privacy() {
   return (
@@ -22,20 +23,17 @@ export default function Privacy() {
           <span style={{ fontSize: "16px", fontWeight: 500, letterSpacing: "0.3em" }}>TIERA</span>
         </a>
 
-        <p role="note" style={{ margin: "40px 0 0", padding: "14px 18px", borderRadius: "14px", border: "1px dashed rgba(224,166,92,0.6)", fontSize: "14px", color: "#E0A65C" }}>
-          Draft. To be reviewed by a Nigerian data protection lawyer before launch.
-        </p>
-
         <h1 style={{ margin: "28px 0 8px", fontSize: "clamp(36px, 6vw, 56px)", fontWeight: 500, letterSpacing: "-0.05em", lineHeight: 1.05 }}>
           Privacy notice
         </h1>
-        <p style={{ ...p, color: "#8FA29D" }}>Last updated: [DATE]</p>
+        <p style={{ ...p, color: "#8FA29D" }}>Last updated: {site.privacy.updated}</p>
 
         <h2 style={h2}>Who we are</h2>
         <p style={p}>
-          Tiera is run by [COMPANY NAME] Ltd, RC [NUMBER], [REGISTERED ADDRESS], Lagos, Nigeria. We decide how your
-          details are used, which makes us the data controller. Contact us at [SUPPORT EMAIL] or on WhatsApp at
-          [WHATSAPP NUMBER].
+          {companyLine ? <>Tiera is run by {companyLine} </> : <>Tiera is run by its founding team in Lagos, Nigeria. </>}
+          We decide how your details are used, which makes us the data controller. Contact us
+          {site.whatsappUrl && <> on <a href={site.whatsappUrl}>WhatsApp</a></>}
+          {site.company.email && <> or at <a href={`mailto:${site.company.email}`}>{site.company.email}</a></>}.
         </p>
 
         <h2 style={h2}>What we collect on this website</h2>
@@ -58,14 +56,14 @@ export default function Privacy() {
 
         <h2 style={h2}>Who we share it with</h2>
         <p style={p}>
-          We never sell your details. They are stored by our hosting provider, [HOSTING PROVIDER], whose servers may
+          We never sell your details. They are stored by our hosting provider, {site.hostingProvider}, whose servers may
           be outside Nigeria. Where that happens, we rely on the safeguards the Nigeria Data Protection Act 2023
           allows for transfers abroad. We share details with authorities only when the law requires it.
         </p>
 
         <h2 style={h2}>How long we keep it</h2>
         <p style={p}>
-          Until the pilot ends and [NUMBER] months after, unless you join Tiera or ask us to delete it sooner.
+          Until the pilot ends and {site.privacy.retentionMonths} months after, unless you join Tiera or ask us to delete it sooner.
         </p>
 
         <h2 style={h2}>Your rights</h2>
@@ -76,10 +74,10 @@ export default function Privacy() {
           <li style={li}>Withdraw your consent or object to how we use it</li>
           <li style={li}>Complain to the Nigeria Data Protection Commission (NDPC)</li>
         </ul>
-        <p style={p}>Message [SUPPORT EMAIL] and we will reply within [NUMBER] days.</p>
+        <p style={p}>Message us{site.whatsappUrl && <> on <a href={site.whatsappUrl}>WhatsApp</a></>} and we will reply within {site.privacy.replyDays} days.</p>
 
         <h2 style={h2}>Keeping it safe</h2>
-        <p style={p}>[SECURITY DETAILS: encryption, who on the team can access sign-ups, how access is controlled.]</p>
+        <p style={p}>Only the founding team can see sign-ups. Your details travel over an encrypted connection and are never posted publicly.</p>
 
         <h2 style={h2}>Changes</h2>
         <p style={p}>If we change this notice, we will update the date above and tell pilot members on WhatsApp.</p>

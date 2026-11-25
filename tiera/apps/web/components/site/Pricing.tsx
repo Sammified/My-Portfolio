@@ -1,5 +1,6 @@
 "use client";
 import type React from "react";
+import { site } from "@/lib/site";
 import { useState } from "react";
 import { formatNaira, naira } from "@tiera/engine";
 
@@ -42,7 +43,7 @@ export function Pricing() {
 </div>
 <p style={{ margin: '0', padding: '10px 18px', borderRadius: '999px', background: 'rgba(46,150,120,0.14)', border: '1px solid rgba(130,220,188,0.35)', fontSize: '14px', color: '#BDE8D6' }}>Lagos pilot: your first 3 months are free on any plan.</p>
 </div>
-<div style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'stretch' }}>
+<div className="t-snap-m" style={{ width: '100%', display: 'flex', flexWrap: 'wrap', gap: '20px', alignItems: 'stretch' }}>
 
 <div className="t-card t-reveal t-tilt" style={{ flex: '1 1 300px', minWidth: '0', padding: '34px', borderRadius: '30px', background: 'linear-gradient(180deg, rgba(20,32,33,0.95) 0%, rgba(10,17,18,0.95) 100%)', border: '1px solid #1F2D2F', display: 'flex', flexDirection: 'column', gap: '20px' }}>
 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}><h3 style={{ margin: '0', fontSize: '22px', fontWeight: '600', letterSpacing: '-0.02em' }}>Starter</h3><p style={{ margin: '0', fontSize: '14px', lineHeight: '1.55', color: '#A9B7B3' }}>For solo owners and small shops with up to 2 staff.</p></div>
@@ -92,7 +93,8 @@ export function Pricing() {
 </div>
 
 </div>
-<p style={{ margin: '0', fontSize: '14px', color: '#8FA29D', textAlign: 'center' }}>Prices in naira, [incl. / excl.] 7.5% VAT. No card needed for the pilot, and nothing is charged automatically when it ends. Cancel any time.</p>
+<p className="md:hidden" style={{ margin: '-28px 0 0', fontSize: '13px', color: '#8FA29D' }}>Swipe to compare all 3 plans</p>
+<p style={{ margin: '0', fontSize: '14px', color: '#8FA29D', textAlign: 'center' }}>Prices in naira{site.vat ? `, ${site.vat === "included" ? "including" : "excluding"} 7.5% VAT` : ""}. No card needed for the pilot, and nothing is charged automatically when it ends. Cancel any time.</p>
 </div>
 </section>
 </>

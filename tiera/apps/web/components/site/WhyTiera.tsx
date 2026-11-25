@@ -26,7 +26,7 @@ export function WhyTiera() {
 <h3 style={{ margin: '0', fontSize: '26px', fontWeight: '600', letterSpacing: '-0.03em' }}>Pay yourself like an employee</h3>
 <p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>A fixed salary, on a fixed day. No more dipping into the till and hoping.</p>
 </div>
-<div style={{ flex: '1 1 240px', minWidth: '0', padding: '22px', borderRadius: '22px', background: '#0A1112', border: '1px solid #22302F', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+<div className="t-hide-m" style={{ flex: '1 1 240px', minWidth: '0', padding: '22px', borderRadius: '22px', background: '#0A1112', border: '1px solid #22302F', display: 'flex', flexDirection: 'column', gap: '14px' }}>
 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8FA29D' }}><span>Owner's salary</span><span style={{ color: '#7FC4A1' }}>Planned</span></div>
 <span style={{ fontSize: '34px', fontWeight: '600', letterSpacing: '-0.04em', fontVariantNumeric: 'tabular-nums' }}>₦300,000</span>
 <span style={{ fontSize: '13px', color: '#A9B7B3' }}>Every Monday, before anything optional.</span>
@@ -47,7 +47,7 @@ export function WhyTiera() {
 <div className="t-card t-reveal t-tilt" style={{ flex: '1 1 340px', minWidth: '0', padding: '34px', borderRadius: '30px', background: 'linear-gradient(180deg, rgba(20,32,33,0.95) 0%, rgba(10,17,18,0.95) 100%)', border: '1px solid #1F2D2F', display: 'flex', flexDirection: 'column', gap: '18px' }}>
 <h3 style={{ margin: '0', fontSize: '26px', fontWeight: '600', letterSpacing: '-0.03em' }}>Postponed, never forgotten</h3>
 <p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>When a slow week can't fund everything, lower tiers wait in line and catch up first when cash comes back.</p>
-<div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
+<div className="t-hide-m" style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '13px' }}>
 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#0A1112', border: '1px solid #22302F' }}><span>Growth top-up</span><span style={{ color: '#E9D3A0' }}>Waiting · 1st in line</span></div>
 <div style={{ display: 'flex', justifyContent: 'space-between', padding: '11px 14px', borderRadius: '14px', background: '#0A1112', border: '1px solid #22302F' }}><span>New shelf</span><span style={{ color: '#A9B7B3' }}>Waiting · 2nd</span></div>
 </div>
@@ -57,7 +57,7 @@ export function WhyTiera() {
 <h3 style={{ margin: '0', fontSize: '26px', fontWeight: '600', letterSpacing: '-0.03em' }}>Grow what's left</h3>
 <p style={{ margin: '0', fontSize: '16px', lineHeight: '1.65', color: '#A9B7B3' }}>Once every tier is covered, Tiera shows what's left to grow. Saving and investing through licensed partners come after the pilot, and only when you say so.</p>
 </div>
-<div style={{ flex: '1 1 260px', minWidth: '0', padding: '22px', borderRadius: '22px', background: '#0A1112', border: '1px solid #22302F', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+<div className="t-hide-m" style={{ flex: '1 1 260px', minWidth: '0', padding: '22px', borderRadius: '22px', background: '#0A1112', border: '1px solid #22302F', display: 'flex', flexDirection: 'column', gap: '10px' }}>
 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', letterSpacing: '0.14em', textTransform: 'uppercase', color: '#8FA29D' }}><span>Growth pot</span><span>Sample</span></div>
 <svg width="100%" height="90" viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true">
 <defs><linearGradient id="tieraGrow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#C8A45D" stopOpacity="0.5"></stop><stop offset="100%" stopColor="#C8A45D" stopOpacity="0"></stop></linearGradient></defs>

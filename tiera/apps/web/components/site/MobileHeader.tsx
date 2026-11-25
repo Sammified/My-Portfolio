@@ -1,5 +1,6 @@
 import type React from "react";
 import { demo, formatNaira } from "@/lib/demo";
+import { site } from "@/lib/site";
 
 export function MobileHeader() {
   return (
@@ -14,14 +15,16 @@ export function MobileHeader() {
 <a href="#join" className="t-tap" style={{ padding: '10px 16px', borderRadius: '999px', background: '#C8A45D', color: '#0B1416', fontSize: '14px', fontWeight: '600', textDecoration: 'none' }}>Join the pilot</a>
 </nav>
 <section id="top-m" style={{ position: 'relative', padding: '64px 20px 36px', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', gap: '20px' }}>
-<p style={{ margin: '0', padding: '7px 14px', borderRadius: '999px', border: '1px solid rgba(236,216,168,0.35)', background: 'rgba(5,10,11,0.6)', fontSize: '11px', fontWeight: '500', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#E9D3A0' }}>For owners tired of guessing</p>
+<p style={{ margin: '0', padding: '7px 14px', borderRadius: '999px', border: '1px solid rgba(236,216,168,0.35)', background: 'rgba(5,10,11,0.6)', fontSize: '11px', fontWeight: '500', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#E9D3A0' }}>Free Android app · Lagos pilot</p>
 <h1 style={{ margin: '0', display: 'flex', flexDirection: 'column', alignItems: 'center', fontWeight: '400' }}>
 <span style={{ fontWeight: '500', fontSize: 'clamp(36px, 11vw, 46px)', letterSpacing: '-0.06em', lineHeight: '1' }}>Your business</span>
 <span style={{ fontFamily: '\'Instrument Serif\', serif', fontStyle: 'italic', fontSize: 'clamp(42px, 13vw, 54px)', lineHeight: '1', padding: '0 6px', background: 'linear-gradient(95deg, #8E7034 0%, #E9D3A0 28%, #FFF6DD 46%, #C8A45D 66%, #7A5F2C 100%)', backgroundSize: '220% 100%', animation: 'tShine 5s ease-in-out infinite alternate', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>makes money.</span>
 <span style={{ fontWeight: '500', fontSize: 'clamp(36px, 11vw, 46px)', letterSpacing: '-0.06em', lineHeight: '1.04', paddingBottom: '4px', background: 'linear-gradient(180deg, #DCE7E3 0%, #7E948E 100%)', WebkitBackgroundClip: 'text', backgroundClip: 'text', color: 'transparent' }}>Tiera makes it stay.</span>
 </h1>
-<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.55', color: '#DCE7E3' }}>Tiera splits every naira that comes in, cash or transfer, in the order you choose: restock, your salary, family, then growth.</p>
+<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.55', color: '#DCE7E3' }}>Tiera is a free Android app that tells every naira, cash or transfer, where to go: restock, your salary, family, then growth. You move the money in your own bank app.</p>
 <a href="#join" style={{ alignSelf: 'stretch', padding: '16px', borderRadius: '999px', background: 'linear-gradient(140deg, #F3E3B8 0%, #C8A45D 60%, #A8853F 100%)', boxShadow: '0 0 30px rgba(232,200,130,0.35)', color: '#0B1416', fontWeight: '600', fontSize: '16px', textDecoration: 'none' }}>Join the Lagos pilot</a>
+{site.whatsappUrl && <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer" style={{ alignSelf: 'stretch', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '15px', borderRadius: '999px', border: '1px solid rgba(130,220,188,0.45)', background: 'rgba(5,10,11,0.5)', color: '#F4F2EC', fontWeight: '500', fontSize: '16px', textDecoration: 'none' }}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7FC4A1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.6-5.2A8.5 8.5 0 1 1 21 11.5z"></path></svg>Chat with us on WhatsApp</a>}
+<p style={{ margin: '0', fontSize: '14px', lineHeight: '1.5', color: '#E9D3A0' }}>First 3 months free · Small Lagos group</p>
 <p style={{ margin: '0', fontSize: '13px', lineHeight: '1.5', color: '#B9CCC6' }}>Your money stays in your own bank. Nothing moves until you approve it.</p>
 </section>
 

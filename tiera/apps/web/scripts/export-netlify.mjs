@@ -1,7 +1,8 @@
 // Builds a static, dependency-free copy of the site for Netlify drag-and-drop.
 // Usage: pnpm --filter @tiera/web build && pnpm --filter @tiera/web start   (in another terminal)
 //        node scripts/export-netlify.mjs [baseUrl] [outDir]
-import { mkdir, readFile, writeFile, copyFile, rm } from "node:fs/promises";
+import { mkdir, readFile, writeFile, copyFile, rm, readdir } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { dirname, join, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -55,6 +56,7 @@ for (const [path, file] of pages) {
   html = strip(html);
   if (file === "index.html") html = netlifyForm(html);
   html = html
+    .replace(/src="\/photos\//g, 'src="photos/')
     .replace(/href="\/privacy"/g, 'href="privacy.html"')
     .replace(/href="\/"/g, 'href="index.html"')
     .replace("</head>", () => `${head}</head>`)
@@ -63,6 +65,11 @@ for (const [path, file] of pages) {
   await writeFile(join(out, file), html);
 }
 for (const f of fonts) await copyFile(join(web, ".next/static/media", f), join(out, "fonts", basename(f)));
+
+// Owner photos for the stories row (optional): apps/web/public/photos/*.jpg
+const photos = join(web, "public/photos");
+await mkdir(join(out, "photos"), { recursive: true });
+if (existsSync(photos)) for (const f of await readdir(photos)) if (/\.(jpe?g|png|webp)$/i.test(f)) await copyFile(join(photos, f), join(out, "photos", f));
 
 await writeFile(join(out, "robots.txt"), "User-agent: *\nDisallow: /\n");
 await writeFile(

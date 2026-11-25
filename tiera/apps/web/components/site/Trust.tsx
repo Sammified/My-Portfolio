@@ -1,4 +1,5 @@
 import type React from "react";
+import { site } from "@/lib/site";
 
 export function Trust() {
   return (
@@ -24,30 +25,29 @@ export function Trust() {
 <div className="t-card" style={{ padding: '34px', background: '#0A1112', display: 'flex', flexDirection: 'column', gap: '14px' }}>
 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E9D3A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"></path></svg>
 <h3 style={{ margin: '0', fontSize: '19px', fontWeight: '600', letterSpacing: '-0.02em' }}>Licensed partners only</h3>
-<p style={{ margin: '0', fontSize: '15px', lineHeight: '1.65', color: '#A9B7B3' }}>Automatic transfers, saving and investing will only launch through licensed partners: [PARTNER NAMES]. None are part of the pilot.</p>
+<p style={{ margin: '0', fontSize: '15px', lineHeight: '1.65', color: '#A9B7B3' }}>Automatic transfers, saving and investing will only launch through licensed partners{site.partners.length ? <>: {site.partners.join(", ")}</> : null}. None are part of the pilot.</p>
 </div>
 <div className="t-card" style={{ padding: '34px', background: '#0A1112', display: 'flex', flexDirection: 'column', gap: '14px' }}>
 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#E9D3A0" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="5" y="10" width="14" height="10" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
 <h3 style={{ margin: '0', fontSize: '19px', fontWeight: '600', letterSpacing: '-0.02em' }}>Your data, protected</h3>
-<p style={{ margin: '0', fontSize: '15px', lineHeight: '1.65', color: '#A9B7B3' }}>We collect the minimum, follow the Nigeria Data Protection Act 2023, and delete your data when you ask. [SECURITY DETAILS]</p>
+<p style={{ margin: '0', fontSize: '15px', lineHeight: '1.65', color: '#A9B7B3' }}>We collect the minimum, follow the Nigeria Data Protection Act 2023, and delete your data when you ask.</p>
 </div>
 </div>
 <div role="note" className="t-card" style={{ display: 'flex', gap: '16px', alignItems: 'flex-start', padding: '24px 28px', borderRadius: '24px', background: 'rgba(185,119,42,0.10)', border: '1px solid rgba(224,166,92,0.45)' }}>
 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#E0A65C" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0, marginTop: '2px' }}><path d="M12 3l9 16H3z"></path><path d="M12 10v4M12 17h.01"></path></svg>
-<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.6', color: '#F4F2EC' }}><strong>Tiera will never ask for your BVN, bank PIN, OTP or password.</strong> <span style={{ color: '#A9B7B3' }}>Not by phone, SMS or WhatsApp. If anyone asks, it is not us. Report it to [SUPPORT CONTACT].</span></p>
+<p style={{ margin: '0', fontSize: '16px', lineHeight: '1.6', color: '#F4F2EC' }}><strong>Tiera will never ask for your BVN, bank PIN, OTP or password.</strong> <span style={{ color: '#A9B7B3' }}>Not by phone, SMS or WhatsApp. If anyone asks, it is not us. {site.whatsappUrl ? <>Report it to us <a href={site.whatsappUrl} target="_blank" rel="noopener noreferrer">on WhatsApp</a>.</> : <>Report it to us.</>}</span></p>
 </div>
+{site.testimonials.length > 0 && (
 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
-<figure className="t-card t-reveal t-tilt" style={{ flex: '1 1 340px', minWidth: '0', margin: '0', padding: '36px', borderRadius: '30px', background: 'radial-gradient(ellipse 80% 100% at 0% 0%, rgba(46,150,120,0.22), rgba(5,10,11,0) 70%), linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-<span aria-hidden="true" style={{ fontFamily: '\'Instrument Serif\', serif', fontSize: '64px', lineHeight: '0.6', color: '#C8A45D' }}>"</span>
-<blockquote style={{ margin: '0', fontFamily: '\'Instrument Serif\', serif', fontSize: '28px', lineHeight: '1.3' }}>[Quote from a pilot business owner]</blockquote>
-<figcaption style={{ fontSize: '14px', color: '#8FA29D' }}>[Name], [business], [city]</figcaption>
+{site.testimonials.map((t) => (
+<figure key={t.name} className="t-card t-reveal t-tilt" style={{ flex: '1 1 340px', minWidth: '0', margin: '0', padding: '36px', borderRadius: '30px', background: 'radial-gradient(ellipse 80% 100% at 0% 0%, rgba(46,150,120,0.22), rgba(5,10,11,0) 70%), linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+<span aria-hidden="true" style={{ fontFamily: '\'Instrument Serif\', serif', fontSize: '64px', lineHeight: '0.6', color: '#C8A45D' }}>&ldquo;</span>
+<blockquote style={{ margin: '0', fontFamily: '\'Instrument Serif\', serif', fontSize: '28px', lineHeight: '1.3' }}>{t.quote}</blockquote>
+<figcaption style={{ fontSize: '14px', color: '#8FA29D' }}>{t.name}, {t.business}, {t.area}</figcaption>
 </figure>
-<figure className="t-card t-reveal t-tilt" style={{ flex: '1 1 340px', minWidth: '0', margin: '0', padding: '36px', borderRadius: '30px', background: 'radial-gradient(ellipse 80% 100% at 100% 0%, rgba(200,164,93,0.16), rgba(5,10,11,0) 70%), linear-gradient(180deg, rgba(20,32,33,0.95), rgba(10,17,18,0.95))', border: '1px solid #1F2D2F', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-<span aria-hidden="true" style={{ fontFamily: '\'Instrument Serif\', serif', fontSize: '64px', lineHeight: '0.6', color: '#C8A45D' }}>"</span>
-<blockquote style={{ margin: '0', fontFamily: '\'Instrument Serif\', serif', fontSize: '28px', lineHeight: '1.3' }}>[Quote from a pilot business owner]</blockquote>
-<figcaption style={{ fontSize: '14px', color: '#8FA29D' }}>[Name], [business], [city]</figcaption>
-</figure>
+))}
 </div>
+)}
 </div>
 </section>
 </>

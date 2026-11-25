@@ -3,7 +3,7 @@ import type React from "react";
 export function Interlude() {
   return (
 <>
-<section className="t-sec" style={{ position: 'relative', overflow: 'hidden', padding: '150px 32px' }}>
+<section className="t-hide-m t-sec" style={{ position: 'relative', overflow: 'hidden', padding: '150px 32px' }}>
 <div aria-hidden="true" style={{ animation: 'tRing 8s ease-in-out infinite', position: 'absolute', left: '50%', top: '50%', width: '1100px', height: '520px', transform: 'translate(-50%, -50%)', borderRadius: '50%', border: '1px solid rgba(236,216,168,0.25)', boxShadow: '0 0 120px rgba(46,150,120,0.30), inset 0 0 120px rgba(46,150,120,0.18)' }}></div>
 <div className="t-float" aria-hidden="true" style={{ position: 'relative', height: '360px', margin: '-60px auto 24px', perspective: '1300px' }}>
 <div style={{ position: 'absolute', left: '50%', bottom: '30px', width: '420px', height: '90px', transform: 'translateX(-50%)', borderRadius: '50%', background: 'radial-gradient(ellipse at center, rgba(46,150,120,0.45), rgba(5,10,11,0) 70%)' }}></div>
