@@ -107,4 +107,4 @@ privacy notice (`/privacy`, a draft for lawyer review), and `[incl. / excl.] 7.5
 
 `[LICENSED BANK PARTNER]`, `[LICENSED PARTNER]`, `[YOUR REQUEST LINK]`, `[Terms]`, `[Privacy Policy]`,
 testimonials, and security details all appear on the site as visible placeholders. The Moniepoint figures
-(65% / 47%) in the Pain section need checking against the published report. Pricing plan features follow the design and still need sign-off.
+(65% / 47%) in the Pain section are cited by report title only, by choice. Pricing plan features follow the design and still need sign-off.
