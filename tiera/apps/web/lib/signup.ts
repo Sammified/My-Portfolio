@@ -1,15 +1,12 @@
 /** Pilot sign-up: validation and storage. Pure functions here; I/O in lib/store.ts. */
 
 export const businessTypes = [
-  "Provisions / supermarket",
-  "Food / restaurant / canteen",
-  "Fashion / tailoring",
-  "Salon / barbing",
-  "Pharmacy / patent medicine",
-  "Phones / electronics",
-  "Wholesale / distribution",
-  "Services (repairs, logistics, etc.)",
-  "Other",
+  "Retail or wholesale trade",
+  "Food or hospitality",
+  "Fashion or beauty",
+  "Pharmacy",
+  "Services",
+  "Something else",
 ] as const;
 
 export type BusinessType = (typeof businessTypes)[number];

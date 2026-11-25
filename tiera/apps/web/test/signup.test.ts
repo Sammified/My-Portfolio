@@ -19,11 +19,11 @@ describe("normaliseNigerianMobile", () => {
 });
 
 describe("validateSignup", () => {
-  const good = { name: "  Ada   Obi ", whatsapp: "0803 123 4567", businessType: "Fashion / tailoring", consent: "on" };
+  const good = { name: "  Ada   Obi ", whatsapp: "0803 123 4567", businessType: "Fashion or beauty", consent: "on" };
   it("accepts and cleans a good sign-up", () => {
     expect(validateSignup(good)).toEqual({
       ok: true,
-      value: { name: "Ada Obi", whatsapp: "+2348031234567", businessType: "Fashion / tailoring" },
+      value: { name: "Ada Obi", whatsapp: "+2348031234567", businessType: "Fashion or beauty" },
     });
   });
   it("reports every bad field", () => {

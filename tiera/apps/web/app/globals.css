@@ -20,43 +20,60 @@
 
   --font-display: var(--font-instrument-serif), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
-
-  --radius-card: 1.25rem;
 }
 
-@layer base {
-  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
-  body {
-    background: var(--color-ink);
-    color: var(--color-linen);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-  }
-  ::selection { background: var(--color-gold); color: var(--color-ink); }
-  :focus-visible { outline: 2px solid var(--color-gold-light); outline-offset: 3px; border-radius: 6px; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  }
+/* The design's inline styles name the families directly; point them at next/font's files. */
+@font-face { font-family: "Inter"; src: local("Inter"); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #050A0B; color: #F4F2EC; -webkit-font-smoothing: antialiased; }
+.t-site, .t-site input, .t-site select, .t-site button { font-family: var(--font-inter), Inter, system-ui, sans-serif !important; }
+.t-site .t-serif, .t-site [style*="Instrument Serif"] { font-family: var(--font-instrument-serif), "Instrument Serif", Georgia, serif !important; }
+a { color: #E9D3A0; } a:hover { color: #FFF6DD; }
+::selection { background: #C8A45D; color: #050A0B; }
+:focus-visible { outline: 2px solid #E9D3A0; outline-offset: 3px; border-radius: 8px; }
+summary { list-style: none; min-height: 44px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; flex-shrink: 0; width: 32px; height: 32px; border-radius: 16px; border: 1px solid #2B3C3E; display: flex; align-items: center; justify-content: center; color: #E9D3A0; font-weight: 400; transition: transform .25s; }
+details[open] summary::after { transform: rotate(45deg); }
+.t-tap { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+select option { background: #0B1416; color: #F4F2EC; }
+
+/* Design animations (from the Tiera Brand Identity canvas). */
+@keyframes tPhone{0%,100%{transform:translateX(-50%) perspective(1800px) rotateX(9deg) rotateY(-13deg) rotateZ(2deg) translateY(0)}50%{transform:translateX(-50%) perspective(1800px) rotateX(5deg) rotateY(-5deg) rotateZ(1deg) translateY(-16px)}}
+@keyframes tBob{0%,100%{transform:translate3d(0,0,var(--z,0px)) rotate(var(--r,0deg))}50%{transform:translate3d(0,-16px,var(--z,0px)) rotate(var(--r,0deg))}}
+@keyframes tSpinZ{from{transform:rotateZ(0deg)}to{transform:rotateZ(360deg)}}
+@keyframes tLift{0%,100%{transform:translateZ(var(--lz,0px))}50%{transform:translateZ(calc(var(--lz,0px) + 22px))}}
+@keyframes tShine{from{background-position:0% 50%}to{background-position:100% 50%}}
+@keyframes tBreath{0%,100%{opacity:.78}50%{opacity:1}}
+@keyframes tRing{0%,100%{opacity:.55;scale:1}50%{opacity:1;scale:1.04}}
+@keyframes tType{0%,12%{width:0}45%,92%{width:100%}100%{width:0}}
+@keyframes tShow{0%,48%{opacity:0;translate:0 10px}56%,92%{opacity:1;translate:0 0}100%{opacity:0;translate:0 0}}
+@keyframes tFill{0%,55%{width:62%}70%,100%{width:80%}}
+@keyframes tToast{0%,52%{opacity:0;translate:0 -24px}60%,90%{opacity:1;translate:0 0}100%{opacity:0;translate:0 -24px}}
+@keyframes tWave{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
+@keyframes tRise{from{opacity:0;translate:0 48px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
+.t-wave span{animation:tWave 1.1s ease-in-out infinite}
+.t-wave span:nth-child(2n){animation-delay:-.35s}
+.t-wave span:nth-child(3n){animation-delay:-.7s}
+.t-tilt{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+@media (hover: hover) { .t-tilt:hover{transform:perspective(1000px) rotateX(5deg) rotateY(-5deg) translateY(-6px)} }
+@supports (animation-timeline: view()){.t-reveal{animation:tRise linear both;animation-timeline:view();animation-range:entry 0% cover 28%}}
+
+/* Mobile: lighter. No 3D, fewer glows, tighter spacing. */
+@media (max-width: 859px){
+  .t-float{display:none !important}
+  .t-lite{animation:none !important}
+  .t-glow{display:none !important}
+}
+@media (max-width: 767px){
+  .t-sec{padding-top:72px !important;padding-bottom:72px !important}
+  .t-wrap{padding-left:20px !important;padding-right:20px !important}
+  .t-card{padding:24px !important}
+  .t-tilt:hover{transform:none}
 }
 
-@utility money { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
-@utility card-solid {
-  border: 1px solid rgb(244 242 236 / 0.14);
-  border-radius: var(--radius-card);
-  background: #10201F;
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .t-reveal{opacity:1 !important;translate:none !important;scale:none !important}
 }
-@utility hairline { border: 1px solid rgb(244 242 236 / 0.10); }
-@utility card {
-  border: 1px solid rgb(244 242 236 / 0.10);
-  border-radius: var(--radius-card);
-  background: linear-gradient(180deg, rgb(16 32 31 / 0.85), rgb(11 20 22 / 0.85));
-}
-
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-@keyframes pulse-ring { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(1.8); opacity: 0; } }
-@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-slow { animation: float 8s ease-in-out infinite; }
-.animate-pulse-ring { animation: pulse-ring 1.6s ease-out infinite; }
-.animate-rise { animation: rise .45s ease-out both; }

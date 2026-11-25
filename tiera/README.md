@@ -35,6 +35,11 @@ pnpm typecheck
 
 ### Website
 
+Built from the **Tiera Brand Identity** design canvas (artboards "Website: home page" and "Website: mobile").
+The desktop hero with the 3D phone shows from 860px wide; below that, the mobile hero from the mobile artboard.
+Section components live in `apps/web/components/site/`. Every naira figure in the hero comes from the engine
+(`apps/web/lib/demo.ts`), except the "Real profit" chart card, which is decorative sample data.
+
 ```bash
 pnpm --filter @tiera/web dev      # http://localhost:3000
 pnpm --filter @tiera/web build && pnpm --filter @tiera/web start   # production build
@@ -89,4 +94,4 @@ Rules:
 
 `[LICENSED BANK PARTNER]`, `[LICENSED PARTNER]`, `[YOUR REQUEST LINK]`, `[Terms]`, `[Privacy Policy]`,
 testimonials, and security details all appear on the site as visible placeholders. The Moniepoint figures
-(65% / 47%) in the Pain section need checking against the published report. Pricing plan features are drafts.
+(65% / 47%) in the Pain section need checking against the published report. Pricing plan features follow the design and still need sign-off.
