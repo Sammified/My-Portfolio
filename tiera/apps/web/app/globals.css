@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+/* Mirrors @tiera/ui-tokens. test/tokens.test.ts fails if these drift. */
+@theme {
+  --color-evergreen: #0E3B34;
+  --color-midnight: #0B1416;
+  --color-ink: #050A0B;
+  --color-linen: #F4F2EC;
+  --color-gold: #C8A45D;
+  --color-gold-light: #E9D3A0;
+  --color-muted: #A9B3AF;
+  --color-faint: #7C8A86;
+  --color-raised: #10201F;
+  --color-funded: #2E7D5B;
+  --color-attention: #B9772A;
+  --color-overdue: #A3261E;
+  --color-funded-text: #6FC79E;
+  --color-attention-text: #E0A65C;
+  --color-overdue-text: #F08A80;
+
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+
+  --radius-card: 1.25rem;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+  body {
+    background: var(--color-ink);
+    color: var(--color-linen);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection { background: var(--color-gold); color: var(--color-ink); }
+  :focus-visible { outline: 2px solid var(--color-gold-light); outline-offset: 3px; border-radius: 6px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+@utility money { font-variant-numeric: tabular-nums; font-feature-settings: "tnum"; }
+@utility card-solid {
+  border: 1px solid rgb(244 242 236 / 0.14);
+  border-radius: var(--radius-card);
+  background: #10201F;
+}
+@utility hairline { border: 1px solid rgb(244 242 236 / 0.10); }
+@utility card {
+  border: 1px solid rgb(244 242 236 / 0.10);
+  border-radius: var(--radius-card);
+  background: linear-gradient(180deg, rgb(16 32 31 / 0.85), rgb(11 20 22 / 0.85));
+}
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulse-ring { 0% { transform: scale(1); opacity: .5; } 100% { transform: scale(1.8); opacity: 0; } }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float 8s ease-in-out infinite; }
+.animate-pulse-ring { animation: pulse-ring 1.6s ease-out infinite; }
+.animate-rise { animation: rise .45s ease-out both; }

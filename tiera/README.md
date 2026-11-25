@@ -9,11 +9,14 @@ Money, in the right order. A money app for small business owners, starting with 
 ```
 tiera/
   apps/
-    web/          Next.js marketing site            (Phase 2, not built yet)
+    web/          Next.js marketing site + pilot sign-up
     mobile/       Expo app, Android first           (Phases 3–5, not built yet)
   packages/
     engine/       Priority engine: pure TS, integer kobo, Vitest
     ui-tokens/    Colours, fonts, spacing, contrast checker
+    i18n/         Language strings (Yorùbá/Igbo/Hausa/Pidgin: NEEDS NATIVE REVIEW)
+  supabase/
+    migrations/   SQL for the sign-up table with row-level security
 ```
 
 ## Requirements
@@ -29,6 +32,25 @@ pnpm install
 pnpm test        # engine + token tests
 pnpm typecheck
 ```
+
+### Website
+
+```bash
+pnpm --filter @tiera/web dev      # http://localhost:3000
+pnpm --filter @tiera/web build && pnpm --filter @tiera/web start   # production build
+```
+
+**Sign-ups without Supabase:** the form works, validates, and logs each sign-up to the server console with the
+phone number masked. Nothing is saved.
+
+**To save sign-ups for real:**
+1. Create a free project at supabase.com.
+2. In the SQL editor, run `supabase/migrations/0001_pilot_signups.sql`.
+3. Copy `apps/web/.env.example` to `apps/web/.env.local` and fill in `SUPABASE_URL` and `SUPABASE_ANON_KEY`
+   (Project Settings → API). On Vercel, add the same two variables.
+4. Read sign-ups in the Supabase dashboard (Table editor → `pilot_signups`). The anon key can insert but never read.
+
+**Deploy to Vercel:** import the repo, set Root Directory to `tiera/apps/web`. Vercel detects Next.js and pnpm.
 
 Watch mode for the engine: `pnpm --filter @tiera/engine test:watch`
 
@@ -56,7 +78,15 @@ Rules:
 2. Then this week's targets, top to bottom.
 3. Any unpaid remainder is carried to next week (postponed, never cancelled).
 4. What's left after every tier is surplus.
-5. Family pot: a request bigger than what the pot has left cannot be approved (`canApproveFamilyRequest`).
-6. All money is integer kobo. `parseNaira` parses strings without floats; inputs that aren't integer kobo throw.
+5. Each tier carries at most 2× its weekly target into next week. Anything above that is reported as `dropped`
+   (`carryCapMultiple` changes or disables this).
+6. Family pot: a request bigger than what the pot has left cannot be approved (`canApproveFamilyRequest`).
+7. All money is integer kobo. `parseNaira` parses strings without floats; inputs that aren't integer kobo throw.
 
 **Numbers come from code, never from AI.** Any AI or voice feature may explain a plan but must read figures from the engine.
+
+## Placeholders to fill before launch
+
+`[LICENSED BANK PARTNER]`, `[LICENSED PARTNER]`, `[YOUR REQUEST LINK]`, `[Terms]`, `[Privacy Policy]`,
+testimonials, and security details all appear on the site as visible placeholders. The Moniepoint figures
+(65% / 47%) in the Pain section need checking against the published report. Pricing plan features are drafts.

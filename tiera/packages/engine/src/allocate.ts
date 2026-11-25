@@ -1,5 +1,7 @@
 import { assertKobo, MoneyError, type Kobo } from "./money";
 
+export const DEFAULT_CARRY_CAP_MULTIPLE = 2;
+
 export interface Tier {
   id: string;
   name: string;
@@ -14,6 +16,12 @@ export interface WeekInput {
   tiers: readonly Tier[];
   /** Unfunded amounts carried over from last week, keyed by tier id. */
   carriedShortfalls?: Readonly<Record<string, Kobo>>;
+  /**
+   * Cap on what a tier may carry into next week, as a multiple of its weekly target.
+   * Default 2 (a tier never owes more than 2× its weekly target from past weeks).
+   * Anything above the cap is reported as `dropped`, so the owner can see it. `null` = no cap.
+   */
+  carryCapMultiple?: number | null;
 }
 
 export type TierStatus = "funded" | "part_funded" | "waiting";
@@ -33,8 +41,12 @@ export interface TierAllocation {
   allocated: Kobo;
   /** carriedIn + target: the full amount this tier asked for this week. */
   due: Kobo;
-  /** Unpaid remainder, carried to next week. Postponed, never cancelled. */
+  /** Unpaid remainder this week (due − allocated). */
   shortfall: Kobo;
+  /** Part of `shortfall` carried to next week (shortfall, capped). */
+  carriedOut: Kobo;
+  /** Part of `shortfall` above the carry cap. Not carried. Shown to the owner, never hidden. */
+  dropped: Kobo;
   status: TierStatus;
 }
 
@@ -44,9 +56,10 @@ export interface WeekPlan {
   totalDue: Kobo;
   totalAllocated: Kobo;
   totalShortfall: Kobo;
+  totalDropped: Kobo;
   /** Income left after every tier is fully funded. */
   surplus: Kobo;
-  /** Feed this into next week's `carriedShortfalls`. Only tiers with a shortfall appear. */
+  /** Feed this into next week's `carriedShortfalls`. Only tiers carrying something appear. */
   nextCarriedShortfalls: Record<string, Kobo>;
 }
 
@@ -57,6 +70,8 @@ export interface WeekPlan {
  * 2. Then pay this week's targets, top to bottom.
  * 3. Any tier not fully paid records its shortfall for next week.
  * 4. Anything left after every tier is surplus.
+ * 5. A tier carries at most `carryCapMultiple` × its weekly target forward (default 2×);
+ *    any excess is reported as `dropped`.
  *
  * Pure function: no I/O, no clock, no randomness. All values are integer kobo.
  */
@@ -64,6 +79,10 @@ export function allocateWeek(input: WeekInput): WeekPlan {
   const { income, tiers } = input;
   const carried = input.carriedShortfalls ?? {};
   assertKobo(income, "income");
+  const capMultiple = input.carryCapMultiple === undefined ? DEFAULT_CARRY_CAP_MULTIPLE : input.carryCapMultiple;
+  if (capMultiple !== null && (!Number.isSafeInteger(capMultiple) || capMultiple < 0)) {
+    throw new MoneyError(`carryCapMultiple must be a non-negative integer or null, got ${capMultiple}`);
+  }
 
   const ids = new Set<string>();
   for (const t of tiers) {
@@ -98,6 +117,9 @@ export function allocateWeek(input: WeekInput): WeekPlan {
     const due = carriedIn + t.weeklyTarget;
     const allocated = cPaid + tPaid;
     const shortfall = due - allocated;
+    const cap = capMultiple === null ? Infinity : t.weeklyTarget * capMultiple;
+    const carriedOut = shortfall <= cap ? shortfall : cap;
+    const dropped = shortfall - carriedOut;
     const status: TierStatus = shortfall === 0 ? "funded" : allocated > 0 ? "part_funded" : "waiting";
     return {
       tierId: t.id,
@@ -109,6 +131,8 @@ export function allocateWeek(input: WeekInput): WeekPlan {
       allocated,
       due,
       shortfall,
+      carriedOut,
+      dropped,
       status,
     };
   });
@@ -117,11 +141,13 @@ export function allocateWeek(input: WeekInput): WeekPlan {
   let totalDue = 0;
   let totalAllocated = 0;
   let totalShortfall = 0;
+  let totalDropped = 0;
   for (const a of allocations) {
     totalDue += a.due;
     totalAllocated += a.allocated;
     totalShortfall += a.shortfall;
-    if (a.shortfall > 0) nextCarriedShortfalls[a.tierId] = a.shortfall;
+    totalDropped += a.dropped;
+    if (a.carriedOut > 0) nextCarriedShortfalls[a.tierId] = a.carriedOut;
   }
 
   return {
@@ -130,6 +156,7 @@ export function allocateWeek(input: WeekInput): WeekPlan {
     totalDue,
     totalAllocated,
     totalShortfall,
+    totalDropped,
     surplus: remaining,
     nextCarriedShortfalls,
   };

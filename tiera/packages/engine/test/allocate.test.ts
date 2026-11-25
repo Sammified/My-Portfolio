@@ -96,6 +96,7 @@ describe("allocateWeek", () => {
       const p = allocateWeek({ income, tiers: ts, carriedShortfalls });
       expect(p.totalAllocated + p.surplus).toBe(income);
       expect(p.totalAllocated + p.totalShortfall).toBe(p.totalDue);
+      for (const a of p.allocations) expect(a.carriedOut + a.dropped).toBe(a.shortfall);
       for (const a of p.allocations) {
         expect(Number.isInteger(a.allocated)).toBe(true);
         expect(a.allocated).toBeLessThanOrEqual(a.due);
@@ -130,6 +131,36 @@ describe("allocateWeek", () => {
     expect(() =>
       allocateWeek({ income: 100, tiers: [{ id: "a", name: "A", weeklyTarget: 0.5 }] }),
     ).toThrow(MoneyError);
+  });
+});
+
+describe("carry cap", () => {
+  it("caps each tier's carry at 2× its weekly target by default and reports the excess", () => {
+    // family target ₦20,000 → cap ₦40,000. Already owes ₦35,000, plus ₦20,000 this week = ₦55,000 due.
+    const plan = allocateWeek({ income: 0, tiers, carriedShortfalls: { family: naira(35_000) } });
+    const family = plan.allocations.find((a) => a.tierId === "family")!;
+    expect(family.shortfall).toBe(naira(55_000));
+    expect(family.carriedOut).toBe(naira(40_000));
+    expect(family.dropped).toBe(naira(15_000));
+    expect(plan.nextCarriedShortfalls.family).toBe(naira(40_000));
+    expect(plan.totalDropped).toBe(naira(15_000));
+  });
+
+  it("stops the backlog growing without limit across many bad weeks", () => {
+    let carried: Record<string, number> = {};
+    for (let w = 0; w < 10; w++) {
+      carried = allocateWeek({ income: naira(50_000), tiers, carriedShortfalls: carried }).nextCarriedShortfalls;
+    }
+    for (const t of tiers) expect(carried[t.id] ?? 0).toBeLessThanOrEqual(t.weeklyTarget * 2);
+  });
+
+  it("can be disabled with null, or tightened", () => {
+    const off = allocateWeek({ income: 0, tiers, carriedShortfalls: { family: naira(35_000) }, carryCapMultiple: null });
+    expect(off.nextCarriedShortfalls.family).toBe(naira(55_000));
+    expect(off.totalDropped).toBe(0);
+    const one = allocateWeek({ income: 0, tiers, carryCapMultiple: 1 });
+    expect(one.totalDropped).toBe(0);
+    expect(() => allocateWeek({ income: 0, tiers, carryCapMultiple: 1.5 })).toThrow(MoneyError);
   });
 });
 
